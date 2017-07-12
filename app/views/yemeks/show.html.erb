@@ -1,0 +1,13 @@
+<p id="notice"><%=@yemek.isim%></p>
+
+<br />
+<br />
+<label>Malzeme Listesi</label>
+<br />
+<% @yemekMalzemes.each do |ym| %>
+&bull; <%=ym.malzeme.isim%> <%=ym.miktar%> <%=ym.malzeme.birim.isim%><br />
+
+<%end%>
+<br />
+<%= link_to 'Edit', edit_yemek_path(@yemek) %> |
+<%= link_to 'Back', yemeks_path %>

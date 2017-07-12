@@ -1,0 +1,2 @@
+module YemekMalzemesHelper
+end

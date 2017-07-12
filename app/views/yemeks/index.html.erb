@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Receteler</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+  <td>Isim</td>
+  <td>Kisi Sayisi</td>
+  <td>Kisi Basi Maliyet</td>
+  <td>Genel Maliyet</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  </tr>
+    <% @yemeks.each do |yemek| %>
+      <tr>
+        <td><%= yemek.isim%></td>
+        <td><%= yemek.kisi%></td>
+        <td><%= yemek.maliyet / yemek.kisi%> TL</td>
+        <td><%= yemek.maliyet%> TL</td>
+        <td><%= link_to 'Show', yemek %></td>
+        <td><%= link_to 'Edit', edit_yemek_path(yemek) %></td>
+        <td><%= link_to 'Destroy', yemek, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Yemek', new_yemek_path %>

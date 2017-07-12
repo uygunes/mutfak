@@ -1,0 +1,22 @@
+<%= form_with(model: birim, local: true) do |form| %>
+  <% if birim.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(birim.errors.count, "error") %> prohibited this birim from being saved:</h2>
+
+      <ul>
+      <% birim.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :isim %>
+    <%= form.text_field :isim, id: :birim_isim %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

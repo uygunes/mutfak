@@ -1,0 +1,22 @@
+<p id="notice">Menu adi: <%=@menu.isim%></p>
+<p id="notice">Tarih: <%=@menu.tarih%></p>
+<p id="notice">Menu Kisi Sayisi: <%=@menu.kisi%></p>
+<p id="notice">Menu Maliyet: <%=@menu.maliyet%></p>
+
+<br />
+<br />
+<label>Yemek Listesi</label>
+<br />
+<table>
+<tr>
+<td>Yemek</td><td>Maliyet</td>
+</tr>
+<% @menuYemek.each do |ym| %>
+<tr>
+<td> <%=ym.yemek.isim%> </td><td><%=ym.yemek.maliyetKisi(@menu.kisi)%> </td>
+</tr>
+<%end%>
+</table>
+
+<%= link_to 'Edit', edit_menu_path(@menu) %> |
+<%= link_to 'Back', menus_path %>

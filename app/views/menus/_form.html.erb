@@ -1,0 +1,22 @@
+<%= semantic_form_for @menu do |f| %>
+  <% f.inputs do %>
+    <%= f.input :isim %>
+    <br />
+    <%= f.input :kisi , :label => "Menu Kac Kisilik?"%>
+    <br />
+    <%= f.label "Tarih" %>
+    <%= f.date_field :tarih%>
+    <h3>Yemekler</h3>
+    <div id='tasks'>
+      <%= f.semantic_fields_for :menu_yemeks do |task| %>
+        <%= render 'menu_yemek_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Yemek Ekle', f, :menu_yemeks %>
+      </div>
+    </div>
+    
+      <%= f.submit 'Kaydet' %>
+    
+  <% end %>
+<% end %>

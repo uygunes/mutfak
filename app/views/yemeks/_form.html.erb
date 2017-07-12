@@ -1,0 +1,19 @@
+<%= semantic_form_for @yemek do |f| %>
+  <% f.inputs do %>
+    <%= f.input :isim %>
+    <br />
+    <%= f.input :kisi , :label => "Kisi Sayisi"%>
+    <h3>Malzemeler</h3>
+    <div id='tasks'>
+      <%= f.semantic_fields_for :yemek_malzemes do |task| %>
+        <%= render 'yemek_malzeme_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Malzeme Ekle', f, :yemek_malzemes %>
+      </div>
+    </div>
+    
+      <%= f.submit 'Kaydet' %>
+    
+  <% end %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class='nested-fields'>
+  <%= f.inputs do %>
+    <%= f.collection_select :malzeme_id, Malzeme.all, :id, :name_with_city, {:prompt => "Malzeme sec"}%>
+    <%= f.number_field :miktar %>
+   
+    <%= link_to_remove_association "Malzeme Sil", f %>
+  <% end %>
+</div>

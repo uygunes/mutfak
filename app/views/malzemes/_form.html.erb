@@ -1,0 +1,31 @@
+<%= form_with(model: malzeme, local: true) do |form| %>
+  <% if malzeme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(malzeme.errors.count, "error") %> prohibited this malzeme from being saved:</h2>
+
+      <ul>
+      <% malzeme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :isim %>
+    <%= form.text_field :isim, isim: :malzeme_isim %>
+  </div>
+   <div class="field">
+    <%= form.label :fiyat %>
+    <%= form.number_field :fiyat, fiyat: :malzeme_fiyat, step: :any %>
+  </div>
+  <div class="field">
+    <%= form.label :birim %>
+    <%= form.collection_select(:birim_id, Birim.all, :id, :isim) %>
+  </div>
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

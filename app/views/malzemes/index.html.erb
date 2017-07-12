@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Malzemes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @malzemes.each do |malzeme| %>
+      <tr>
+        <td><%= malzeme.isim %></td>
+        <td><%= malzeme.fiyat %></td>
+        <td><%= malzeme.birim.isim %></td>
+        <td><%= link_to 'Show', malzeme %></td>
+        <td><%= link_to 'Edit', edit_malzeme_path(malzeme) %></td>
+        <td><%= link_to 'Destroy', malzeme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Malzeme', new_malzeme_path %>

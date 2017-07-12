@@ -1,0 +1,17 @@
+<%= form_with(model: yemek_malzeme, local: true) do |form| %>
+  <% if yemek_malzeme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(yemek_malzeme.errors.count, "error") %> prohibited this yemek_malzeme from being saved:</h2>
+
+      <ul>
+      <% yemek_malzeme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
