@@ -10,8 +10,15 @@
   </thead>
 
   <tbody>
+  <tr><td>Isim</td><td>Kisi</td><td>Tarih</td><td>Maliyet</td>
+  <td></td><td></td><td></td>
+  </tr>
     <% @menus.each do |menu| %>
       <tr>
+        <td><%= menu.isim %></td>
+        <td><%= menu.kisi %></td>
+        <td><%= menu.tarih %></td>
+        <td><%= menu.maliyet %> TL</td>
         <td><%= link_to 'Show', menu %></td>
         <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
         <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
