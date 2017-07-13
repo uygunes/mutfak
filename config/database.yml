@@ -78,8 +78,22 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: kitchen_production
-  username: kitchen
-  password: <%= ENV['KITCHEN_DATABASE_PASSWORD'] %>
+#production:
+#  <<: *default
+#  database: kitchen_production
+#  username: kitchen
+#  password: <%= ENV['KITCHEN_DATABASE_PASSWORD'] %>
+
+
+#kitchen_production
+#kitchen_password
+
+  production:
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    database: <%= ENV['RDS_DB_NAME'] %>
+    username: <%= ENV['RDS_USERNAME'] %>
+    password: <%= ENV['RDS_PASSWORD'] %>
+    host: <%= ENV['RDS_HOSTNAME'] %>
+    port: <%= ENV['RDS_PORT'] %>
