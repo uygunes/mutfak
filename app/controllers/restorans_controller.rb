@@ -69,6 +69,6 @@ class RestoransController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restoran_params
-      params.require(:restoran).permit(:isim, :kisi)
+      params.require(:restoran).permit(:isim, :kisi,restoran_oguns_attributes: [:id, :ogun_id, :_destroy])
     end
 end
