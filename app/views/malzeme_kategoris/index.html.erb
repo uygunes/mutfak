@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Malzeme Kategoris</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @malzeme_kategoris.each do |malzeme_kategori| %>
+      <tr>
+        <td><%= malzeme_kategori.isim %></td>
+        <td><%= link_to 'Show', malzeme_kategori %></td>
+        <td><%= link_to 'Edit', edit_malzeme_kategori_path(malzeme_kategori) %></td>
+        <td><%= link_to 'Destroy', malzeme_kategori, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Malzeme Kategori', new_malzeme_kategori_path %>

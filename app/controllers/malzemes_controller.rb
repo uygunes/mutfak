@@ -69,6 +69,6 @@ class MalzemesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def malzeme_params
-      params.fetch(:malzeme, {}).permit(:isim,:fiyat,:birim_id);
+      params.fetch(:malzeme, {}).permit(:isim,:fiyat,:birim_id,:malzeme_kategori_id);
     end
 end

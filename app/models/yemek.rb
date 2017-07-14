@@ -1,6 +1,7 @@
 class Yemek < ApplicationRecord
 	has_many :yemek_malzemes
 	has_many :menu_yemeks
+    belongs_to :yemek_kategori
 	has_many :malzemes, :through => :yemek_malzemes, :class_name => 'YemekMalzeme'
 	has_many :menus, :through => :menu_yemeks, :class_name => 'MenuYemek'
 

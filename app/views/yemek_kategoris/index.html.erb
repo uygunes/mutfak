@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Yemek Kategoris</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isim</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @yemek_kategoris.each do |yemek_kategori| %>
+      <tr>
+        <td><%= yemek_kategori.isim %></td>
+        <td><%= link_to 'Show', yemek_kategori %></td>
+        <td><%= link_to 'Edit', edit_yemek_kategori_path(yemek_kategori) %></td>
+        <td><%= link_to 'Destroy', yemek_kategori, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Yemek Kategori', new_yemek_kategori_path %>

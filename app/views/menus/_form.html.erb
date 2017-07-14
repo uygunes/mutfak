@@ -5,7 +5,8 @@
     <%= f.input :kisi , :label => "Menu Kac Kisilik?"%>
     <br />
     <%= f.label "Tarih" %>
-    <%= f.date_field :tarih%>
+    <%= f.date_field :tarih%><br /><br />
+    <%= f.label "Durum" %><%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]] )%>
     <h3>Yemekler</h3>
     <div id='tasks'>
       <%= f.semantic_fields_for :menu_yemeks do |task| %>

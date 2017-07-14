@@ -23,6 +23,10 @@
     <%= form.label :birim %>
     <%= form.collection_select(:birim_id, Birim.all, :id, :isim) %>
   </div>
+  <div class="field">
+    <%= form.label "Malzeme Kategorisi" %>
+    <%= form.collection_select(:malzeme_kategori_id, MalzemeKategori.all, :id, :isim) %>
+  </div>
   
 
   <div class="actions">

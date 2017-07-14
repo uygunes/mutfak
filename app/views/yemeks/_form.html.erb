@@ -3,6 +3,8 @@
     <%= f.input :isim %>
     <br />
     <%= f.input :kisi , :label => "Kisi Sayisi"%>
+    <br />
+    <%= f.collection_select :yemek_kategori_id, YemekKategori.all, :id, :isim, {:prompt => "Kategori sec"}%>
     <h3>Malzemeler</h3>
     <div id='tasks'>
       <%= f.semantic_fields_for :yemek_malzemes do |task| %>
