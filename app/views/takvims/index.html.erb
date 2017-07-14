@@ -1,3 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Takvims</h1>
+
 <script type="text/javascript">
 $(document).ready(function() {
    $("#calendar").fullCalendar({
@@ -8,7 +12,7 @@ $(document).ready(function() {
      defaultView: "month",
      height: 500,
      slotMinutes: 90,
-     events: "/takvims/get_events",
+     events: "/takvims/get_events_full",
      timeFormat: "h:mm",
      dragOpacity: "0.5"
   });
@@ -16,3 +20,5 @@ $(document).ready(function() {
 </script>
 
 <div id="calendar"></div>
+
+<br>

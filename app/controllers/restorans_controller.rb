@@ -1,5 +1,5 @@
 class RestoransController < ApplicationController
-  before_action :set_restoran, only: [:show, :edit, :update,:takvim, :destroy]
+  before_action :set_restoran, only: [:show, :edit, :update, :destroy]
 
   # GET /restorans
   # GET /restorans.json
@@ -19,10 +19,6 @@ class RestoransController < ApplicationController
 
   # GET /restorans/1/edit
   def edit
-  end
-
-  def takvim
-    render "takvim"
   end
 
   # POST /restorans
