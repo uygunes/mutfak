@@ -7,6 +7,8 @@
     <%= f.label "Tarih" %>
     <%= f.date_field :tarih%><br /><br />
     <%= f.label "Durum" %><%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]] )%>
+    <br /><br />
+    <%= f.label "Ogun" %><%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"}%>
     <h3>Yemekler</h3>
     <div id='tasks'>
       <%= f.semantic_fields_for :menu_yemeks do |task| %>

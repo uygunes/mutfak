@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isim:</strong>
+  <%= @restoran.isim %>
+</p>
+
+<p>
+  <strong>Kisi:</strong>
+  <%= @restoran.kisi %>
+</p>
+
+<%= link_to 'Edit', edit_restoran_path(@restoran) %> |
+<%= link_to 'Back', restorans_path %>

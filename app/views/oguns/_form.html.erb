@@ -1,0 +1,11 @@
+<%= semantic_form_for @ogun do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :isim %>
+    <%= f.input :baslangic %>
+    <%= f.input :bitis %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

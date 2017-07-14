@@ -1,4 +1,5 @@
 class Menu < ApplicationRecord
+    belongs_to :ogun
 	has_many :menu_yemeks
 	has_many :yemeks, :through => :menu_yemeks
 

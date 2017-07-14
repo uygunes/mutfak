@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Oguns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isim</th>
+      <th>Baslangic</th>
+      <th>Bitis</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oguns.each do |ogun| %>
+      <tr>
+        <td><%= ogun.isim %></td>
+        <td><%= ogun.baslangic %></td>
+        <td><%= ogun.bitis %></td>
+        <td><%= link_to 'Show', ogun %></td>
+        <td><%= link_to 'Edit', edit_ogun_path(ogun) %></td>
+        <td><%= link_to 'Destroy', ogun, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ogun', new_ogun_path %>

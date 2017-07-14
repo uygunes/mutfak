@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :restorans
+  resources :oguns
   root to: "home#index"
   resources :controllers
   resources :birims
