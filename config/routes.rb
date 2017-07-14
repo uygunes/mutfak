@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :menuyemeks
   resources :malzeme_kategoris
   resources :yemek_kategoris
+  get '/restorans/:id/takvim', to: 'restorans#takvim'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

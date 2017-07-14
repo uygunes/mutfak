@@ -33,6 +33,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails', '5.0.5'
 gem 'cocoon'
 gem 'formtastic', '~> 3.0'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

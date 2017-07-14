@@ -15,5 +15,10 @@
 //= require jquery3
 //= require jquery_ujs
 //= require jquery-ui/datepicker
+//= require moment 
+//= require fullcalendar
 //= require cocoon
 //= require_tree .
+
+
+$('#calendar').fullCalendar({});
