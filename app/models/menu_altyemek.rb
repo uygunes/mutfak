@@ -1,0 +1,2 @@
+class MenuAltyemek < ApplicationRecord
+end

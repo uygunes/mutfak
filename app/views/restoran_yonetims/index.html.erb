@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Restoran Yonetims</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+ <%= form_tag(restoran_yonetims_path,method: :get) do %>
+ <tr><td><label>Tarih</label></td><td><%= date_field_tag :tarih %></td></tr>
+ <tr><td> <label>Restoran</label></td><td><%= select_tag(:restoran_id, options_for_select(Restoran.all.map {|res| [res.isim,res.id] }),{:prompt => "Restoran Sec"})%></td></tr>
+ 
+  <%= submit_tag 'Search', name: nil %>
+<% end %></td>
+  </tr>
+</table>
+<table>
+<%if @result.instance_of? Restoran %>
+<tr><td colspan="2"><%@result.isim%></td></tr>
+<%@result.menus.each do |menu| %>
+<tr>
+<td><%=menu.ogun.isim%></td><td><%=menu.isim%></td></tr>
+<%end%>
+<%else%>
+<%@result.each do|rest|%>
+<tr>
+<td>
+<%=rest.isim%>
+</td>
+</tr>
+<%rest.menus.each do |menu| %>
+<tr>
+<td><%=menu.ogun.isim%></td><td><%=menu.isim%></td></tr>
+<%end%>
+<%end%>
+<%end%>
+</table>
+<br>
+

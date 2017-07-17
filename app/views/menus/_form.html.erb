@@ -9,6 +9,9 @@
     <%= f.label "Durum" %><%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]] )%>
     <br /><br />
     <%= f.label "Ogun" %><%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"}%>
+    <br /><br />
+    <%= f.label "Restoran" %><%= f.collection_select :restoran_id, Restoran.all, :id, :isim, {:prompt => "Restoran sec"}%>
+    <br /><br />
     <h3>Yemekler</h3>
     <div id='tasks'>
       <%= f.semantic_fields_for :menu_yemeks do |task| %>
@@ -18,7 +21,16 @@
         <%= link_to_add_association 'Yemek Ekle', f, :menu_yemeks %>
       </div>
     </div>
-    
+     <br /><br />
+    <div id='alts'>
+      <%= f.semantic_fields_for :menu_altyemeks do |task| %>
+        <%= render 'menu_altyemek_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Alt Yemek Ekle', f, :menu_altyemeks %>
+      </div>
+    </div>
+ <br /><br />
       <%= f.submit 'Kaydet' %>
     
   <% end %>

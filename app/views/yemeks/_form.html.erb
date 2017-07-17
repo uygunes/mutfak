@@ -14,7 +14,17 @@
         <%= link_to_add_association 'Malzeme Ekle', f, :yemek_malzemes %>
       </div>
     </div>
-    
+     <br /><br />
+    <div id='alts'>
+      <%= f.semantic_fields_for :yemek_altyemeks do |task| %>
+        <%= render 'alt_yemek_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Alt Yemek Ekle', f, :yemek_altyemeks %>
+      </div>
+    </div>
+
+ <br /><br />
       <%= f.submit 'Kaydet' %>
     
   <% end %>

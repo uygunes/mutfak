@@ -1,0 +1,6 @@
+<div class='nested-fields'>
+  <%= f.inputs do %>
+    <%= f.collection_select :altyemek_id, AltYemek.all, :id, :isim, {:prompt => "Alt Yemek sec"}%>
+    <%= link_to_remove_association "Alt Yemek Sil", f %>
+  <% end %>
+</div>

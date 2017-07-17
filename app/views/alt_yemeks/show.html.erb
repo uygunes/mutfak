@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isim:</strong>
+  <%= @alt_yemek.isim %>
+</p>
+
+<p>
+  <strong>Yemek kategori:</strong>
+  <%= @alt_yemek.yemek_kategori_id %>
+</p>
+
+<%= link_to 'Edit', edit_alt_yemek_path(@alt_yemek) %> |
+<%= link_to 'Back', alt_yemeks_path %>

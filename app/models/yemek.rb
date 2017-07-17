@@ -1,15 +1,19 @@
 class Yemek < ApplicationRecord
 	has_many :yemek_malzemes
 	has_many :menu_yemeks
+    has_many :yemek_altyemeks
     belongs_to :yemek_kategori
+    belongs_to :kategori
 	has_many :malzemes, :through => :yemek_malzemes, :class_name => 'YemekMalzeme'
 	has_many :menus, :through => :menu_yemeks, :class_name => 'MenuYemek'
+    has_many :alt_yemeks, :through => :yemek_altyemeks, :class_name => 'YemekAltyemek'
 
 	accepts_nested_attributes_for :yemek_malzemes
     accepts_nested_attributes_for :malzemes
     accepts_nested_attributes_for :menu_yemeks
     accepts_nested_attributes_for :menus
-
+    accepts_nested_attributes_for :yemek_altyemeks
+    accepts_nested_attributes_for :alt_yemeks
 
 
     def maliyet

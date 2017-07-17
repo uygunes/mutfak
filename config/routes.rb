@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :alt_yemeks
+  resources :kategoris
   resources :restorans
   resources :oguns
   root to: "home#index"
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
   resources :menuyemeks
   resources :malzeme_kategoris
   resources :yemek_kategoris
+  resources :restoran_yonetims
   get '/takvims/get_events_full', to: 'takvims#get_events_full'
   get '/takvim' ,to: 'takvims#index'
   get '/takvims/:id' ,to: 'takvims#show'

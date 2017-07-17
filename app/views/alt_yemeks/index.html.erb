@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Alt Yemeks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isim</th>
+      <th>Yemek kategori</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alt_yemeks.each do |alt_yemek| %>
+      <tr>
+        <td><%= alt_yemek.isim %></td>
+        <td><%= alt_yemek.yemek_kategori_id %></td>
+        <td><%= link_to 'Show', alt_yemek %></td>
+        <td><%= link_to 'Edit', edit_alt_yemek_path(alt_yemek) %></td>
+        <td><%= link_to 'Destroy', alt_yemek, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alt Yemek', new_alt_yemek_path %>
