@@ -1,0 +1,40 @@
+machine:
+  timezone:
+    Asia/Baghdad
+  environment:
+    STARTSUB_ASSET_URL: 'https://startsub.com'
+  ruby:
+    version:
+      2.2.3
+
+dependencies:
+  pre:
+    - gem install bundler
+    - sudo apt-get install python-dev
+    - sudo pip install 'awsebcli==3.7.4' --force-reinstall
+  bundler:
+    without:
+      - development
+
+test:
+  override:
+    - bundle exec rake db:migrate
+    - bundle exec rake test
+    - bundle exec rubocop -c .rubocop.yml
+
+checkout:
+  post:
+    - git submodule init
+    - git submodule update
+
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - bash ./setup-eb.sh
+      - eb deploy startsub-staging2
+  production:
+    branch: master
+    commands:
+      - bash ./setup-eb.sh
+      - eb deploy 

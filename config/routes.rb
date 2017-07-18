@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
   resources :alt_yemeks
-  resources :kategoris
   resources :restorans
   resources :oguns
   root to: "home#index"

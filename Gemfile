@@ -36,6 +36,7 @@ gem 'formtastic', '~> 3.0'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "github_api"
+gem "roo", "~> 2.7.0"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,8 +1,8 @@
 class Menu < ApplicationRecord
     belongs_to :ogun
     belongs_to :restoran
-	has_many :menu_yemeks
-	has_many :yemeks, :through => :menu_yemeks
+	has_many :menu_yemeks, :dependent => :restrict_with_error
+	has_many :yemeks, :through => :menu_yemeks, :dependent => :restrict_with_error
 
 
 	accepts_nested_attributes_for :menu_yemeks

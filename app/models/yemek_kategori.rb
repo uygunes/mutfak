@@ -1,3 +1,3 @@
 class YemekKategori < ApplicationRecord
-	has_many :yemeks
+	has_many :yemeks, :dependent => :restrict_with_error
 end

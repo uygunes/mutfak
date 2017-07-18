@@ -1,10 +1,10 @@
 class Yemek < ApplicationRecord
-	has_many :yemek_malzemes
-	has_many :menu_yemeks
+	has_many :yemek_malzemes, :dependent => :restrict_with_error
+	has_many :menu_yemeks, :dependent => :restrict_with_error
     belongs_to :yemek_kategori
-	has_many :malzemes, :through => :yemek_malzemes, :class_name => 'YemekMalzeme'
-	has_many :menus, :through => :menu_yemeks, :class_name => 'MenuYemek'
-    has_many :alt_yemeks
+	has_many :malzemes, :through => :yemek_malzemes, :class_name => 'YemekMalzeme', :dependent => :restrict_with_error
+	has_many :menus, :through => :menu_yemeks, :class_name => 'MenuYemek', :dependent => :restrict_with_error
+    has_many :alt_yemeks, :dependent => :restrict_with_error
 
 	accepts_nested_attributes_for :yemek_malzemes
     accepts_nested_attributes_for :malzemes

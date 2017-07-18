@@ -1,7 +1,7 @@
 class Restoran < ApplicationRecord
-	has_many :restoran_oguns
-	has_many :oguns, :through => :restoran_oguns
-	has_many :menus
+	has_many :restoran_oguns, :dependent => :restrict_with_error
+	has_many :oguns, :through => :restoran_oguns, :dependent => :restrict_with_error
+	has_many :menus, :dependent => :restrict_with_error
     
 
 	accepts_nested_attributes_for :restoran_oguns
