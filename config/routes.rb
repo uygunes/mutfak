@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/takvim' ,to: 'takvims#index'
   get '/takvims/:id' ,to: 'takvims#show'
   get '/takvims/:id/get_events', to: 'takvims#get_events'
+  get '/versions', to: 'takvims#view'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,6 +1,11 @@
 class TakvimsController < ApplicationController
   before_action :set_takvim, only: [:show, :edit, :update, :destroy]
 
+def view
+    @github = Github.new
+    @github.repos.releases.list 'uygunes', 'mutfak'
+    render "version"
+  end
 
 def get_events_full
     @rest = Restoran.all
