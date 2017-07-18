@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717204539) do
+ActiveRecord::Schema.define(version: 20170718143022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20170717204539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kisi"
+    t.integer "yemek_id"
+    t.integer "alt_yemek_id"
   end
 
   create_table "birims", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170717204539) do
     t.datetime "updated_at", null: false
     t.integer "malzeme_kategori_id"
     t.integer "kategori_id"
+    t.float "miktar"
     t.index ["birim_id"], name: "index_malzemes_on_birim_id"
     t.index ["tedarikci_id"], name: "index_malzemes_on_tedarikci_id"
   end
@@ -143,6 +146,8 @@ ActiveRecord::Schema.define(version: 20170717204539) do
     t.float "miktar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "alt_yemek_id"
+    t.integer "kisi"
     t.index ["malzeme_id"], name: "index_yemek_malzemes_on_malzeme_id"
     t.index ["yemek_id"], name: "index_yemek_malzemes_on_yemek_id"
   end

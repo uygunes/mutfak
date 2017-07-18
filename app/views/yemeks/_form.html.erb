@@ -16,11 +16,11 @@
     </div>
      <br /><br />
     <div id='alts'>
-      <%= f.semantic_fields_for :yemek_altyemeks do |task| %>
+      <%= f.semantic_fields_for :alt_yemeks do |task| %>
         <%= render 'alt_yemek_fields', :f => task %>
       <% end %>
       <div class='links'>
-        <%= link_to_add_association 'Alt Yemek Ekle', f, :yemek_altyemeks %>
+        <%= link_to_add_association 'Yemek Ekle', f, :alt_yemeks %>
       </div>
     </div>
 

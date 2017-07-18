@@ -44,10 +44,13 @@ class YemeksController < ApplicationController
   # PATCH/PUT /yemeks/1.json
   def update
     respond_to do |format|
+      puts @yemek.errors.full_messages
+      puts "lagnnnnnnnn"
       if @yemek.update(yemek_params)
         format.html { redirect_to @yemek, notice: 'Yemek was successfully updated.' }
         format.json { render :show, status: :ok, location: @yemek }
       else
+        puts @yemek.errors.full_messages
         format.html { render :edit }
         format.json { render json: @yemek.errors, status: :unprocessable_entity }
       end
@@ -72,6 +75,6 @@ class YemeksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yemek_params
-      params.require(:yemek).permit(:isim,:kisi,:yemek_kategori_id,yemek_malzemes_attributes: [:id, :malzeme_id, :miktar, :_destroy])
+      params.require(:yemek).permit(:isim,:kisi,:yemek_kategori_id,yemek_malzemes_attributes: [:id, :malzeme_id, :miktar,:_destroy],alt_yemeks_attributes: [:id, :alt_yemek_id, :kisi,:_destroy])
     end
 end
