@@ -21,15 +21,6 @@
         <%= link_to_add_association 'Yemek Ekle', f, :menu_yemeks %>
       </div>
     </div>
-     <br /><br />
-    <div id='alts'>
-      <%= f.semantic_fields_for :menu_altyemeks do |task| %>
-        <%= render 'menu_altyemek_fields', :f => task %>
-      <% end %>
-      <div class='links'>
-        <%= link_to_add_association 'Alt Yemek Ekle', f, :menu_altyemeks %>
-      </div>
-    </div>
  <br /><br />
       <%= f.submit 'Kaydet' %>
     

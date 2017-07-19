@@ -1,4 +1,5 @@
 class Menu < ApplicationRecord
+    default_scope { order(isim: :asc) }
     belongs_to :ogun
     belongs_to :restoran
 	has_many :menu_yemeks, :dependent => :restrict_with_error

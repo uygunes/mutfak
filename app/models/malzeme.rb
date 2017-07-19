@@ -1,6 +1,6 @@
 class Malzeme < ApplicationRecord
 
-
+ default_scope { order(isim: :asc) }
 
 belongs_to :birim
 has_many :yemek_malzemes, :dependent => :restrict_with_error

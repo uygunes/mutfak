@@ -1,4 +1,5 @@
 class Yemek < ApplicationRecord
+    default_scope { order(isim: :asc) }
 	has_many :yemek_malzemes, :dependent => :restrict_with_error
 	has_many :menu_yemeks, :dependent => :restrict_with_error
     belongs_to :yemek_kategori

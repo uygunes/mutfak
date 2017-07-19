@@ -1,4 +1,5 @@
 class Ogun < ApplicationRecord
+	 default_scope { order(isim: :asc) }
 	has_many :menus , :dependent => :restrict_with_error
 
 	has_many :restoran_oguns, :dependent => :restrict_with_error
