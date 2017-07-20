@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719151243) do
+ActiveRecord::Schema.define(version: 20170720121353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,26 @@ ActiveRecord::Schema.define(version: 20170719151243) do
     t.index ["tedarikci_id"], name: "index_malzemes_on_tedarikci_id"
   end
 
+  create_table "mekan_kategoris", force: :cascade do |t|
+    t.string "isim"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mekan_oguns", force: :cascade do |t|
+    t.integer "mekan_id"
+    t.integer "ogun_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mekans", force: :cascade do |t|
+    t.string "isim"
+    t.integer "mekan_kategori_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "menu_altyemeks", force: :cascade do |t|
     t.bigint "menu_id"
     t.bigint "altyemek_id"
@@ -102,6 +122,13 @@ ActiveRecord::Schema.define(version: 20170719151243) do
     t.boolean "is_active"
     t.integer "ogun_id"
     t.integer "restoran_id"
+    t.integer "mekan_id"
+  end
+
+  create_table "mutfaks", force: :cascade do |t|
+    t.string "isim"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oguns", force: :cascade do |t|
@@ -178,6 +205,7 @@ ActiveRecord::Schema.define(version: 20170719151243) do
     t.integer "kisi"
     t.integer "yemek_kategori_id"
     t.integer "kategori_id"
+    t.integer "mekan_id"
   end
 
 end

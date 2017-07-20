@@ -28,7 +28,7 @@ class BirimsController < ApplicationController
 
     respond_to do |format|
       if @birim.save
-        format.html { redirect_to @birim, notice: 'Birim was successfully created.' }
+        format.html { redirect_to birims_path, notice: 'Birim was successfully created.' }
         format.json { render :show, status: :created, location: @birim }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class BirimsController < ApplicationController
   def update
     respond_to do |format|
       if @birim.update(birim_params)
-        format.html { redirect_to @birim, notice: 'Birim was successfully updated.' }
+        format.html { redirect_to birims_path, notice: 'Birim was successfully updated.' }
         format.json { render :show, status: :ok, location: @birim }
       else
         format.html { render :edit }

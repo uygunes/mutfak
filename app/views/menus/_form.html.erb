@@ -6,11 +6,12 @@
     <br />
     <%= f.label "Tarih" %>
     <%= f.date_field :tarih%><br /><br />
-    <%= f.label "Durum" %><%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]] )%>
+    <%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]],{:prompt => "Durum sec"} )%>
     <br /><br />
-    <%= f.label "Ogun" %><%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"}%>
-    <br /><br />
-    <%= f.label "Restoran" %><%= f.collection_select :restoran_id, Restoran.all, :id, :isim, {:prompt => "Restoran sec"}%>
+    <%= f.collection_select :mekan_id, Mekan.restoran, :id, :isim, {:prompt => "Restoran sec"}%>
+      <br /><br />
+    <%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"}%>
+   
     <br /><br />
     <h3>Yemekler</h3>
     <div id='tasks'>

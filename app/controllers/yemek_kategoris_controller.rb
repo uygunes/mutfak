@@ -28,7 +28,7 @@ class YemekKategorisController < ApplicationController
 
     respond_to do |format|
       if @yemek_kategori.save
-        format.html { redirect_to @yemek_kategori, notice: 'Yemek kategori was successfully created.' }
+        format.html { redirect_to yemek_kategoris_path, notice: 'Yemek kategori was successfully created.' }
         format.json { render :show, status: :created, location: @yemek_kategori }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class YemekKategorisController < ApplicationController
   def update
     respond_to do |format|
       if @yemek_kategori.update(yemek_kategori_params)
-        format.html { redirect_to @yemek_kategori, notice: 'Yemek kategori was successfully updated.' }
+        format.html { redirect_to yemek_kategoris_path, notice: 'Yemek kategori was successfully updated.' }
         format.json { render :show, status: :ok, location: @yemek_kategori }
       else
         format.html { render :edit }

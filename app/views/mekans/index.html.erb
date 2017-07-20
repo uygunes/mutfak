@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mekans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isim</th>
+      <th>Mekan kategori</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mekans.each do |mekan| %>
+      <tr>
+        <td><%= mekan.isim %></td>
+        <td><%= mekan.mekan_kategori.isim %></td>
+        <td><%= link_to 'Show', mekan %></td>
+        <td><%= link_to 'Edit', edit_mekan_path(mekan) %></td>
+        <td><%= link_to 'Destroy', mekan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mekan', new_mekan_path %>

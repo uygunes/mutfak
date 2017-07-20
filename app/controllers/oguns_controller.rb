@@ -28,7 +28,7 @@ class OgunsController < ApplicationController
 
     respond_to do |format|
       if @ogun.save
-        format.html { redirect_to @ogun, notice: 'Ogun was successfully created.' }
+        format.html { redirect_to oguns_path, notice: 'Ogun was successfully created.' }
         format.json { render :show, status: :created, location: @ogun }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class OgunsController < ApplicationController
   def update
     respond_to do |format|
       if @ogun.update(ogun_params)
-        format.html { redirect_to @ogun, notice: 'Ogun was successfully updated.' }
+        format.html { redirect_to oguns_path, notice: 'Ogun was successfully updated.' }
         format.json { render :show, status: :ok, location: @ogun }
       else
         format.html { render :edit }

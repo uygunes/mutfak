@@ -29,7 +29,7 @@ class MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to @menu, notice: 'Menu was successfully created.' }
+        format.html { redirect_to menus_path, notice: 'Menu was successfully created.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -42,10 +42,12 @@ class MenusController < ApplicationController
   # PATCH/PUT /menus/1.json
   def update
     respond_to do |format|
+       puts @menu.errors.full_messages
       if @menu.update(menu_params)
-        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+        format.html { redirect_to menus_path, notice: 'Menu was successfully updated.' }
         format.json { render :show, status: :ok, location: @menu }
       else
+        puts @menu.errors.full_messages
         format.html { render :edit }
         format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
@@ -70,6 +72,6 @@ class MenusController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:isim,:kisi,:tarih,:ogun_id,:restoran_id, menu_yemeks_attributes: [:id, :yemek_id, :_destroy])
+      params.require(:menu).permit(:isim,:kisi,:tarih,:ogun_id,:mekan_id,:is_active, menu_yemeks_attributes: [:id, :yemek_id, :_destroy])
     end
 end

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :mekans
+  resources :mekan_kategoris
   devise_for :users, path: '',path_names: {sign_in: 'giris', sign_up: 'kayit', sign_out: 'cikis'}
   resources :alt_yemeks
   resources :restorans
@@ -19,6 +21,7 @@ Rails.application.routes.draw do
   get '/takvim' ,to: 'takvims#index'
   get '/takvims/:id' ,to: 'takvims#show'
   get '/takvims/:id/get_events', to: 'takvims#get_events'
+  post '/mekans/:id/get_restoran_ogun', to: 'mekans#get_restoran_oguns'
   get '/versions', to: 'takvims#view'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isim:</strong>
+  <%= @mekan.isim %>
+</p>
+
+<p>
+  <strong>Mekan kategori:</strong>
+  <%= @mekan.mekan_kategori.isim %>
+</p>
+
+<%= link_to 'Edit', edit_mekan_path(@mekan) %> |
+<%= link_to 'Back', mekans_path %>

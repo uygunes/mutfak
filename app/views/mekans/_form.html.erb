@@ -1,0 +1,19 @@
+<%= semantic_form_for @mekan do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :isim %>
+    <%= f.collection_select :mekan_kategori_id, MekanKategori.all, :id, :isim, {:prompt => "Mekan Kategorisi Sec"} %>
+    <h3>Ogunler</h3>
+    <div id='tasks'>
+      <%= f.semantic_fields_for :mekan_oguns do |task| %>
+        <%= render 'mekan_ogun_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Ogun Ekle', f, :mekan_oguns %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
