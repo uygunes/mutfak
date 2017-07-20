@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users, path: '',path_names: {sign_in: 'giris', sign_up: 'kayit', sign_out: 'cikis'}
   resources :alt_yemeks
   resources :restorans
   resources :oguns

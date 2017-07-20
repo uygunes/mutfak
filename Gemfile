@@ -37,6 +37,8 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "github_api"
 gem "roo", "~> 2.7.0"
+gem 'devise', '~> 4.2'
+gem 'petergate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
