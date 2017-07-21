@@ -6,7 +6,7 @@
     <br />
     <%= f.collection_select :yemek_kategori_id, YemekKategori.all, :id, :isim, {:prompt => "Kategori sec"}%>
     <br />
-    <%= f.collection_select :mekan_id, Mekan.mutfak, :id, :isim, {:prompt => "Mutfak sec"}%>
+    <%= f.collection_select :mekan_id, Mekan.mutfak_bar, :id, :isim, {:prompt => "Mutfak sec"}%>
      <br />
     <h3>Malzemeler</h3>
     <div id='tasks'>

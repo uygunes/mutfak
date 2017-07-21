@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - !ruby/regexp /old_and_unused\.rb$/
+    - bin/**/*
+    - app/admin/**/*
+    - app/helpers/**/*
+    - app/mailers/**/*
+    - lib/**/*
+    - db/**/*
+    - app/views/**/*
+  Include:
+    - app/models/**/*
+    - app/scontroller/**/*
+Style/AsciiComments:
+  Description: 'Use only ascii symbols in comments.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#english-comments'
+  Enabled: false
