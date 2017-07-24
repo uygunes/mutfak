@@ -5,7 +5,7 @@ $("#menu_mekan_id").on("change", function(){
 
 	$.ajax({    
     url: '/mekans/'+$(this).val()+'/get_restoran_ogun',    
-    type: 'post',    
+    type: 'get',    
     dataType: 'json',    
     contentType: 'application/json',    
     ifModified:true,    

@@ -1,0 +1,23 @@
+<h1>Stok Girisi</h1>
+
+<%= semantic_form_for @mekan do |f| %>
+  <%= f.inputs do %>
+    <%= f.collection_select :id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %>
+    <h3>Ogunler</h3>
+    <div id='tasks'>
+      <%= f.semantic_fields_for :mekan_stoks do |task| %>
+        <%= render 'mekan_stok_fields', :f => task %>
+      <% end %>
+      <div class='links'>
+        <%= link_to_add_association 'Stok Ekle', f, :mekan_stoks %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Show', @mekan %> |
+<%= link_to 'Back', mekans_path %>

@@ -12,22 +12,31 @@
   <body>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-        <div>
+       <div style="">
+        <div style="float:left">
           <div><%= link_to "Birimler", birims_path%></div>
           <div><%= link_to "Mekanlar", mekans_path%></div>
           <div><%= link_to "Malzemeler", malzemes_path%></div>
           <div><%= link_to "Malzeme Kategorileri", malzeme_kategoris_path%></div>
-          <div><%= link_to "Yemekler", yemeks_path%></div>
+         
           <div><%= link_to "Yemek Kategorileri", yemek_kategoris_path%></div>
-          <div><%= link_to "Menuler", menus_path%></div>
+
           <div><%= link_to "Ogunler", malzemes_path%></div>
         </div>
+        <div style="float:left;">
+            <div><%= link_to "Menuler", menus_path%></div>
+            <div><%= link_to "Yemekler", yemeks_path%></div>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br />
+        <div style="float: right">
         <% if current_user.is_a?(User) %>
       <%= link_to "Cikis", destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to "Kaydol", new_user_registration_path %>
       <%= link_to "Giris Yap", new_user_session_path %>
     <% end %>
+    </div>
+    </div>
     <%= yield %>
   </body>
 </html>

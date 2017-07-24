@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stoks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Malzeme</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stoks.each do |stok| %>
+      <tr>
+        <td><%= stok.malzeme_id %></td>
+        <td><%= link_to 'Show', stok %></td>
+        <td><%= link_to 'Edit', edit_stok_path(stok) %></td>
+        <td><%= link_to 'Destroy', stok, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Stok', new_stok_path %>

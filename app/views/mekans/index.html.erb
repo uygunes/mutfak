@@ -18,7 +18,9 @@
         <td><%= mekan.mekan_kategori.isim %></td>
         <td><%= link_to 'Show', mekan %></td>
         <td><%= link_to 'Edit', edit_mekan_path(mekan) %></td>
+        <td><%= link_to 'Stok Gir', stok_mekan_path(mekan) %></td>
         <td><%= link_to 'Destroy', mekan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
   </tbody>

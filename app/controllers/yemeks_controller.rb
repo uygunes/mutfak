@@ -75,6 +75,6 @@ class YemeksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yemek_params
-      params.require(:yemek).permit(:isim,:kisi,:yemek_kategori_id,:mekan_id,yemek_malzemes_attributes: [:id, :malzeme_id, :miktar,:_destroy],alt_yemeks_attributes: [:id, :alt_yemek_id, :kisi,:_destroy])
+      params.require(:yemek).permit(:id, :isim,:kisi,:yemek_kategori_id,:mekan_id,yemek_malzemes_attributes: [:id, :malzeme_id, :miktar,:_destroy])
     end
 end

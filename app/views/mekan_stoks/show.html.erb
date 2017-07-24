@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mekan:</strong>
+  <%= @mekan_stok.mekan_id %>
+</p>
+
+<p>
+  <strong>Stok:</strong>
+  <%= @mekan_stok.stok_id %>
+</p>
+
+<%= link_to 'Edit', edit_mekan_stok_path(@mekan_stok) %> |
+<%= link_to 'Back', mekan_stoks_path %>

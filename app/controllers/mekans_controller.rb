@@ -1,5 +1,5 @@
 class MekansController < ApplicationController
-  before_action :set_mekan, only: [:show, :edit, :update, :destroy,:get_restoran_oguns]
+  before_action :set_mekan, only: [:show, :edit, :update, :destroy,:get_restoran_oguns,:stok]
   access all: [:index, :show, :new, :edit, :create, :update, :destroy], user: :all
 
   # GET /mekans
@@ -18,6 +18,9 @@ class MekansController < ApplicationController
 
   # GET /mekans/1/edit
   def edit
+  end
+
+  def stok
   end
 
   def get_restoran_oguns

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mekan Stoks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mekan</th>
+      <th>Stok</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mekan_stoks.each do |mekan_stok| %>
+      <tr>
+        <td><%= mekan_stok.mekan_id %></td>
+        <td><%= mekan_stok.stok_id %></td>
+        <td><%= link_to 'Show', mekan_stok %></td>
+        <td><%= link_to 'Edit', edit_mekan_stok_path(mekan_stok) %></td>
+        <td><%= link_to 'Destroy', mekan_stok, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mekan Stok', new_mekan_stok_path %>
