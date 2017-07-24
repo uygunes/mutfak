@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :user_roles
   resources :mekan_stoks
   resources :stoks
   resources :mekans do

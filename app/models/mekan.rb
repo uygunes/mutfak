@@ -1,6 +1,7 @@
 class Mekan < ApplicationRecord
 	belongs_to :mekan_kategori
 	default_scope { order(isim: :asc) }
+	has_many :users, :dependent => :restrict_with_error
 
 	has_many :yemeks, :dependent => :restrict_with_error
 	has_many :mekan_oguns, :dependent => :restrict_with_error

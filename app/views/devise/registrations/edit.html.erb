@@ -10,6 +10,13 @@
     <%= f.label :email %><br />
     <%= f.email_field :email%>
   </div>
+    <div class="field">
+    <%= f.collection_select :mekan_id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_select :roles, UserRole.all, :normalized, :isim, {:prompt => "Rol Sec"} %>
+  </div>
  
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

@@ -6,7 +6,7 @@ module DeviseWhitelist
 	end
 
 	def configure_permitted_params
-	  	devise_parameter_sanitizer.permit(:sign_up, keys:[:isim])
-	  	devise_parameter_sanitizer.permit(:account_update, keys:[:isim])
+	  	devise_parameter_sanitizer.permit(:sign_up, keys:[:isim,:mekan_id])
+	  	devise_parameter_sanitizer.permit(:account_update, keys:[:isim, :mekan_id])
   	end
 end
