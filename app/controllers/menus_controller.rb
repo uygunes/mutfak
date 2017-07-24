@@ -1,5 +1,6 @@
 class MenusController < ApplicationController
-  before_action :set_menu, only: [:show, :edit, :update, :destroy]
+  require 'amoeba'
+  before_action :set_menu, only: [:show, :edit, :update, :destroy, :aktif]
 
   # GET /menus
   # GET /menus.json
@@ -18,8 +19,25 @@ class MenusController < ApplicationController
     @menu = Menu.new
   end
 
+  def aktif
+    @menu.update(is_active: true)
+    @menu.save
+    render :aktif
+  end
+
   # GET /menus/1/edit
   def edit
+  end
+
+  def kopyala
+    ex =Menu.find_by_id(params[:id])
+    exMenu = ex.kopyala
+    exMenu.update(isim: "#{ex.isim} - kopya")
+    exMenu.update(tarih: "1970-01-01")
+    exMenu.save
+    respond_to do |format|
+      format.html { redirect_to menus_path, notice: 'Menu kopyalandi.' }
+    end
   end
 
   # POST /menus

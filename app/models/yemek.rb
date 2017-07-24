@@ -14,6 +14,8 @@ class Yemek < ApplicationRecord
     accepts_nested_attributes_for :menus
     accepts_nested_attributes_for :alt_yemeks
 
+    
+
 
     def maliyet
     	tutar = 0

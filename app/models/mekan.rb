@@ -21,4 +21,5 @@ class Mekan < ApplicationRecord
     scope :bar, -> { where(:mekan_kategori_id => "3")}
     scope :mutfak_bar, -> {where(mekan_kategori_id: [2,3])}
     scope :bar_restoran, -> {where(mekan_kategori_id: [1,3])}
+
 end

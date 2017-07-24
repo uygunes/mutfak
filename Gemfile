@@ -40,6 +40,7 @@ gem "roo", "~> 2.7.0"
 gem 'devise'
 gem 'petergate'
 gem 'rubocop', '~> 0.49.1', require: false
+gem 'amoeba'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

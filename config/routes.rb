@@ -18,14 +18,19 @@ Rails.application.routes.draw do
   resources :malzemes
   resources :yemeks
   resources :yemekmalzemes
-  resources :menus
+  resources :menus do
+    member do
+      get 'kopyala'
+      get 'aktif'
+    end
+  end
+
   resources :menuyemeks
   resources :malzeme_kategoris
   resources :yemek_kategoris
   resources :restoran_yonetims
   get '/takvims/get_events_full', to: 'takvims#get_events_full'
   get '/takvim', to: 'takvims#index'
-  
   get '/takvims/:id', to: 'takvims#show'
   get '/takvims/:id/get_events', to: 'takvims#get_events'
   get '/mekans/:id/get_restoran_ogun', to: 'mekans#get_restoran_oguns'

@@ -14,4 +14,8 @@ class Ogun < ApplicationRecord
 
     accepts_nested_attributes_for :mekan_oguns
     accepts_nested_attributes_for :mekans
+
+    amoeba do
+    enable
+  end
 end

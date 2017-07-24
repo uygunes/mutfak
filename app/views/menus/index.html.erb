@@ -23,6 +23,8 @@
         <td><%= menu.mekan.isim %></td>
         <td><%= link_to 'Show', menu %></td>
         <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
+        <td><%= link_to 'Kopyala', kopyala_menu_path(menu) %></td>
+        <td><%= link_to 'Aktiflestir', aktif_menu_path(menu) %></td>
         <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

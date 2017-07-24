@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>LAgn</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+ 
+  <tr><td colspan="6">Bu ymek icin sunlar gerekli</td></tr>
+    <% @menu.gerekli_malzemeler.each do |malzeme_id,miktar| %>
+      <tr>
+        <td><%= Malzeme.find_by_id(malzeme_id).isim %></td><td><%= miktar %><%= Malzeme.find_by_id(malzeme_id).birim.isim %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
