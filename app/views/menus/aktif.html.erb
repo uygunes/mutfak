@@ -10,12 +10,16 @@
   </thead>
 
   <tbody>
-  <tr><td colspan="6">Bu ymek icin sunlar gerekli</td></tr>
-    <% @menu.gerekli_malzemeler.each do |malzeme_id,miktar| %>
+  <tr><td colspan="2">Mutfak Bazli Yemek Listesi</td></tr>
+    <% @menu.mekan_bazli_yemek.each_pair do |mekan,yemek| %>
+    <tr><td colspan="2"><b><%=mekan.isim%> Yemek Listesi</b></td></tr>
+    <tr><td>Yemek</td><td>Maliyet</td></tr>
+    <%yemek.each do |y| %>
       <tr>
-        <td><%= Malzeme.find_by_id(malzeme_id).isim %></td><td><%= miktar %><%= Malzeme.find_by_id(malzeme_id).birim.isim %></td>
+        <td><%=y.isim%></td><td><%=y.yemek_menu_maliyet(@menu.id)%> TL</td>
       </tr>
-    <% end %>
+     <% end %>
+    <%end%>
   </tbody>
 </table>
 

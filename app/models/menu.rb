@@ -30,6 +30,11 @@ class Menu < ApplicationRecord
     	tutar
     end
 
+    def mekan_bazli_yemek
+        yemekler = self.yemeks
+        yemekler.group_by{|e| e.mekan}
+    end
+
     def gerekli_malzemeler
         malzeme_listesi = Hash.new(0)
         self.yemeks.each do |x|

@@ -25,6 +25,10 @@ class Yemek < ApplicationRecord
     	tutar
     end
 
+    def yemek_menu_maliyet(menu_id)
+        MenuYemek.find_by(yemek_id: self.id, menu_id: menu_id).kisi / self.kisi * self.maliyet
+    end
+
      def maliyetKisi(kisi)
     	tutar = 0
     	carpan = kisi / self.kisi
