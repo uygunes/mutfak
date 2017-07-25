@@ -21,7 +21,7 @@ class Menu < ApplicationRecord
     	my.each do|m|
             menu_yemek_kisi = m.kisi
             if menu_yemek_kisi.nil?
-                carpam = self.kisi / m.yemek.kisi
+                carpan = self.kisi / m.yemek.kisi
             else
     		    carpan = menu_yemek_kisi / m.yemek.kisi
             end
