@@ -16,4 +16,9 @@ accepts_nested_attributes_for :stok, allow_destroy: true
 "#{isim} / #{fiyat} TL / #{self.birim.isim}"
 	end
 
+
+	def malzeme_fiyat
+		self.fiyat / self.miktar
+	end
+
 end

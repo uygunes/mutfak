@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Kullanici:</strong>
+  <%= @user.isim %><br /><br />
+  <%= @user.email %><br /><br />
+  <%= @user.mekan.isim %><br /><br />
+  <%= @user.roles %><br /><br />
+</p>
+
+<%= link_to 'Edit', edit_user_management_path(@user) %> |
+<%= link_to 'Back', user_management_path %>

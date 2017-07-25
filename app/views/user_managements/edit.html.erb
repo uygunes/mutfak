@@ -1,0 +1,15 @@
+<h1>Kullanici Duzenle Kullanici</h1>
+
+<%= form_for @user, url: "update", :authenticity_token => true  do |f| %>
+<%= token_tag %> 
+    <%= f.text_field :isim, placeholder: "Isim" %><br /><br />
+    <%= f.email_field :email, placeholder: "Email" %><br /><br />
+    <%= f.password_field :password , placeholder: "Sifre"%><br /><br />
+    <%= f.password_field :password_confirmation , placeholder: "Sifre Tekrar"%><br /><br />
+    <%= f.collection_select :mekan_id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %><br /><br />
+    <%= f.collection_select :roles, UserRole.all, :normalized, :isim, {:prompt => "Rol Sec"} %><br /><br />
+   
+  <%= f.submit  %>
+<% end  %>
+
+<%= link_to 'Back', user_management_path %>

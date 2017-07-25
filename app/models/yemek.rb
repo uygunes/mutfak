@@ -20,7 +20,7 @@ class Yemek < ApplicationRecord
     def maliyet
     	tutar = 0
     	self.malzemes.each do|malz|
-    		tutar = tutar + ((malz.fiyat / malz.miktar) * YemekMalzeme.find_by(yemek_id:self.id,malzeme_id:malz.id).miktar)
+    		tutar = tutar + ((malz.malzeme_fiyat) * YemekMalzeme.find_by(yemek_id:self.id,malzeme_id:malz.id).miktar)
     	end
     	tutar
     end
@@ -29,7 +29,7 @@ class Yemek < ApplicationRecord
     	tutar = 0
     	carpan = kisi / self.kisi
     	self.malzemes.each do|malz|
-    		tutar = tutar + ((malz.fiyat / malz.miktar) * YemekMalzeme.find_by(yemek_id:self.id,malzeme_id:malz.id).miktar)
+    		tutar = tutar + ((malz.malzeme_fiyat) * YemekMalzeme.find_by(yemek_id:self.id,malzeme_id:malz.id).miktar)
     	end
     	tutar * carpan
     end

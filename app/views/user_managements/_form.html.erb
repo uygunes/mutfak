@@ -1,0 +1,10 @@
+<%= form_for :user_management, url: "create", :authenticity_token => true  do |f| %>
+    <%= f.text_field :isim, placeholder: "Isim" %><br /><br />
+    <%= f.email_field :email, placeholder: "Email" %><br /><br />
+    <%= f.password_field :password , placeholder: "Sifre"%><br /><br />
+    <%= f.password_field :password_confirmation , placeholder: "Sifre Tekrar"%><br /><br />
+    <%= f.collection_select :mekan_id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %><br /><br />
+    <%= f.collection_select :roles, UserRole.all, :normalized, :isim, {:prompt => "Rol Sec"} %><br /><br />
+   
+  <%= f.submit  %>
+<% end  %>
