@@ -20,7 +20,11 @@ class Menu < ApplicationRecord
         my = MenuYemek.where(menu_id: self.id)
     	my.each do|m|
             menu_yemek_kisi = m.kisi
-    		carpan = menu_yemek_kisi / m.yemek.kisi
+            if menu_yemek_kisi.nil?
+                carpam = self.kisi / m.yemek.kisi
+            else
+    		    carpan = menu_yemek_kisi / m.yemek.kisi
+            end
     		tutar = tutar + (carpan * m.yemek.maliyet)
     	end
     	tutar
