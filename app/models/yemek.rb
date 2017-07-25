@@ -25,8 +25,16 @@ class Yemek < ApplicationRecord
     	tutar
     end
 
+    def yemek_menu_kisi(menu_id)
+        MenuYemek.find_by(yemek_id: self.id, menu_id: menu_id).kisi
+    end
+
     def yemek_menu_maliyet(menu_id)
-        MenuYemek.find_by(yemek_id: self.id, menu_id: menu_id).kisi / self.kisi * self.maliyet
+        if self.yemek_menu_kisi(menu_id).nil?
+            (Menu.find_by_id(menu_id).kisi / self.kisi) * self.maliyet
+        else
+            (self.yemek_menu_kisi(menu_id) / self.kisi) * self.maliyet
+        end
     end
 
      def maliyetKisi(kisi)
