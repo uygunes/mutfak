@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :siparis_formus do
+    member do
+      get 'form'
+      post 'kaydet'
+      end
+    end
   resources :user_roles
   resources :mekan_stoks
   resources :stoks

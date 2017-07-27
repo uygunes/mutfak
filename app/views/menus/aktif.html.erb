@@ -19,6 +19,9 @@
         <td><%=y.isim%></td><td><%=y.yemek_menu_maliyet(@menu.id)%> TL</td>
       </tr>
      <% end %>
+      <tr>
+        <td></td><td><%= link_to 'Siparis Formu Olustur', form_siparis_formu_path(:menu_id => @menu.id, :mekan_id => mekan.id) %></td>
+      </tr>
     <%end%>
   </tbody>
 </table>

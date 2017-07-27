@@ -49,4 +49,5 @@ class Yemek < ApplicationRecord
     def kisi_maliyet
     	"#{isim} / #{self.maliyet / self.kisi} KB Maliyet"
     end
+    
 end

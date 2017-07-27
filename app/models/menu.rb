@@ -2,6 +2,7 @@ class Menu < ApplicationRecord
     default_scope { order(isim: :asc) }
     belongs_to :ogun
     belongs_to :mekan
+    has_many :siparis_formu
 	has_many :menu_yemeks, :dependent => :restrict_with_error
 	has_many :yemeks, :through => :menu_yemeks, :dependent => :restrict_with_error
 
@@ -48,5 +49,31 @@ class Menu < ApplicationRecord
     def kopyala
         ex = self.amoeba_dup
         ex
+    end
+    
+    def mekana_gore_yemek(mekan_id)
+        self.yemeks.select{|yemek| yemek.mekan_id = mekan_id}
+    end
+    
+    def kisi_bul(yemek_id)
+        carpan = 0
+        yemek = Yemek.find_by_id(yemek_id).kisi
+        if MenuYemek.find_by(yemek_id:yemek_id,menu_id:self.id).kisi.nil?
+           carpan = self.kisi / yemek
+        else
+           carpan = MenuYemek.find_by(yemek_id:yemek_id,menu_id:self.id).kisi / yemek
+        end
+        carpan
+    end
+    
+    def mekan_malzeme_listesi(mekan_id)
+        malzeme_listesi = Hash.new(0)
+        yemekler = mekana_gore_yemek(mekan_id)
+        yemekler.each do |x|
+            x.malzemes.each do |y|
+                malzeme_listesi[y.id] += kisi_bul(x.id) * YemekMalzeme.find_by(yemek_id:x.id,malzeme_id: y.id).miktar
+            end
+        end
+        malzeme_listesi
     end
 end

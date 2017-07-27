@@ -21,6 +21,11 @@ class MekansController < ApplicationController
   end
 
   def stok
+     if @mekan.update(mekan_params)
+      redirect_to mekans_path, notice: 'Mekan was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def get_restoran_oguns
@@ -66,6 +71,6 @@ class MekansController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def mekan_params
-      params.require(:mekan).permit(:isim, :mekan_kategori_id,mekan_oguns_attributes: [:id, :ogun_id, :_destroy])
+      params.require(:mekan).permit(:id, :isim, :mekan_kategori_id,mekan_oguns_attributes: [:id, :ogun_id, :_destroy], mekan_stoks_attributes: [:id, :miktar,:_destroy, :stok_id])
     end
 end
