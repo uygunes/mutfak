@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :siparis_formus do
-    member do
-      get 'form'
-      post 'kaydet'
-      end
-    end
   resources :user_roles
   resources :mekan_stoks
   resources :stoks
@@ -47,6 +41,8 @@ Rails.application.routes.draw do
   get 'user_management/:id', to: 'user_managements#show', as: 'show_user_management'
   get 'user_management/:id/destroy', to: 'user_managements#destroy', as: 'destroy_user_management'
   get 'user_management/:id/edit', to: 'user_managements#edit', as: 'edit_user_management'
+  post 'siparis_formu/kaydet', to: 'siparis_formus#kaydet', as: 'kaydet_siparis_formu'
+  get 'siparis_formu/form', to: 'siparis_formus#form', as: 'form_siparis_formu'
   patch 'user_management/:id/update', to: 'user_managements#update', as: 'update_user_management'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

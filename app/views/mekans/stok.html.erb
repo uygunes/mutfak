@@ -1,6 +1,6 @@
 <h1>Stok Girisi</h1>
 
-<%= semantic_form_for :mekan, :url => stok_article_path(@article) do |f| %>
+<%= semantic_form_for @mekan, :url => stok_mekan_path(@article) do |f| %>
   <%= f.inputs do %>
     <%= f.collection_select :id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %>
     <h3>Ogunler</h3>
