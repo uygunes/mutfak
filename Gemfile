@@ -41,6 +41,7 @@ gem 'devise'
 gem 'petergate'
 gem 'rubocop', '~> 0.49.1', require: false
 gem 'amoeba'
+gem 'rollbar'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
