@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Malzeme:</strong>
+  <%= @siparis_formu.malzeme_id %>
+</p>
+
+<p>
+  <strong>Miktar:</strong>
+  <%= @siparis_formu.miktar %>
+</p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @siparis_formu.menu_id %>
+</p>
+
+<%= link_to 'Edit', edit_siparis_formu_path(@siparis_formu) %> |
+<%= link_to 'Back', siparis_formus_path %>

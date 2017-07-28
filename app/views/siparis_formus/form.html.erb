@@ -1,0 +1,9 @@
+<%= form_for :siparis_formu, url: "kaydet", :authenticity_token => true  do |f| %>
+<%= token_tag %>
+<%=f.hidden_field :menu_id, :value => @menu.id%>
+<%=f.hidden_field :mekan_id, :value => @mekan.id%>
+ <%@malzemes.each do |key,value|%>
+   <%= f.label Malzeme.find_by_id(key).isim%>  <%= f.text_field :"malzeme_#{Malzeme.find_by_id(key).id}", value: "#{value}"%><br /><br />
+   <%end%>
+  <%= f.submit  %>
+<% end  %>
