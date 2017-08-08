@@ -33,6 +33,7 @@ class StoksController < ApplicationController
 
   # PATCH/PUT /stoks/1
   def update
+    
     if @stok.update(stok_params)
       redirect_to @stok, notice: 'Stok was successfully updated.'
     else

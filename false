@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20170807180329_add_onay_to_siparis_formu.rb

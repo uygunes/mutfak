@@ -8,9 +8,9 @@ class Mekan < ApplicationRecord
 	has_many :mekan_oguns, :dependent => :restrict_with_error
 	has_many :oguns, :through => :mekan_oguns, :dependent => :restrict_with_error
 	has_many :menus, :dependent => :restrict_with_error
-	has_many :stoks, :dependent => :restrict_with_error
 	has_many :mekan_stoks, :dependent => :restrict_with_error
-
+	has_many :stoks, :through => :mekan_stoks, :dependent => :restrict_with_error
+	has_many :yemek_uretims, :dependent => :restrict_with_error
 
 	accepts_nested_attributes_for :mekan_oguns
     accepts_nested_attributes_for :oguns

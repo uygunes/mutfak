@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   require 'amoeba'
-  before_action :set_menu, only: [:show, :edit, :update, :destroy, :aktif]
+  before_action :set_menu, only: [:show, :edit, :update, :destroy, :aktif, :uretim,:artan]
 
   # GET /menus
   # GET /menus.json
@@ -24,9 +24,75 @@ class MenusController < ApplicationController
     @menu.save
     render :aktif
   end
+  
+  def uretim
+    render :uretim
+  end
+  
+  def artan
+    render :artan
+  end
 
   # GET /menus/1/edit
   def edit
+  end
+  
+  def uretim_kayit
+        menu = Menu.find_by_id(params[:yemek_uretim][:menu_id])
+     
+    params[:yemek_uretim].each do |key, value| 
+        
+       if (key.start_with?("yemek"))
+         yemek = Yemek.find_by(id: key.split("_").last)
+        
+        # birim = Birim.find_by_id(params[:yemek_uretim]["birim_#{yemek.id}"])
+         if !YemekUretim.find_by(yemek_id: yemek.id, menu_id: menu.id, mekan_id: yemek.mekan.id ).nil?
+           yemek_uretim = YemekUretim.find_by(yemek_id: key.split("_").last, menu_id: menu.id, mekan_id: yemek.mekan.id )
+           yemek_uretim.miktar = params[:yemek_uretim]["miktar_#{yemek.id}"]
+           yemek_uretim.birim_id = params[:yemek_uretim][:"birim_#{yemek.id}"]
+           puts params[:yemek_uretim][:"birim_#{yemek.id}"]
+         else
+          yemek_uretim = YemekUretim.new
+          yemek_uretim.mekan_id = yemek.mekan.id
+          yemek_uretim.menu_id = menu.id
+          yemek_uretim.birim_id =params[:yemek_uretim][:"birim_#{yemek.id}"]
+          yemek_uretim.yemek_id = key.split("_").last
+          yemek_uretim.miktar = params[:yemek_uretim]["miktar_#{yemek.id}"]
+          yemek_uretim.tip = "uretim"
+         end
+          yemek_uretim.save!
+       end
+    end
+    redirect_to menus_path, notice: 'Yemek uretimi girildi.'
+  end
+  
+   def artan_kayit
+        menu = Menu.find_by_id(params[:yemek_uretim][:menu_id])
+     
+    params[:yemek_uretim].each do |key, value| 
+        
+       if (key.start_with?("yemek"))
+         yemek = Yemek.find_by(id: key.split("_").last)
+        
+        # birim = Birim.find_by_id(params[:yemek_uretim]["birim_#{yemek.id}"])
+         if !YemekUretim.find_by(yemek_id: yemek.id, menu_id: menu.id, mekan_id: yemek.mekan.id ).nil?
+           yemek_uretim = YemekUretim.find_by(yemek_id: key.split("_").last, menu_id: menu.id, mekan_id: yemek.mekan.id )
+           yemek_uretim.miktar = params[:yemek_uretim]["miktar_#{yemek.id}"]
+           yemek_uretim.birim_id = params[:yemek_uretim][:"birim_#{yemek.id}"]
+           puts params[:yemek_uretim][:"birim_#{yemek.id}"]
+         else
+          yemek_uretim = YemekUretim.new
+          yemek_uretim.mekan_id = yemek.mekan.id
+          yemek_uretim.menu_id = menu.id
+          yemek_uretim.birim_id =params[:yemek_uretim][:"birim_#{yemek.id}"]
+          yemek_uretim.yemek_id = key.split("_").last
+          yemek_uretim.miktar = params[:yemek_uretim]["miktar_#{yemek.id}"]
+          yemek_uretim.tip = "artan"
+         end
+          yemek_uretim.save!
+       end
+    end
+    redirect_to menus_path, notice: 'Yemek uretimi girildi.'
   end
 
   def kopyala

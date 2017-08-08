@@ -4,7 +4,18 @@ class SiparisFormusController < ApplicationController
 
   # GET /siparis_formus
   def index
-    @siparis_formus = SiparisFormu.all
+    @siparis_formus = SiparisFormu.group(:id,:menu_id).distinct.pluck(:menu_id)
+  end
+  
+  def menu
+    @menu = Menu.find_by_id(params[:id])
+    @mekanlar = @menu.mekan_listesi_distinct(@menu.id)
+  end
+  
+  def menu_mekan
+    @menu = Menu.find_by_id(params[:menu_id])
+    @mekan = Mekan.find_by_id(params[:mekan_id])
+    @malzemeler = SiparisFormu.mekan_menu_siparis(@mekan.id,@menu.id)
   end
 
   # GET /siparis_formus/1
@@ -21,20 +32,45 @@ class SiparisFormusController < ApplicationController
   def kaydet
       menu = Menu.find_by_id(params[:siparis_formu][:menu_id])
       mekan = Mekan.find_by_id(params[:siparis_formu][:mekan_id])
-      
-      puts menu
-      puts mekan
+    
     params[:siparis_formu].each do |key, value| 
-    puts key
-    puts value
        if (key.start_with?("malzeme"))
- 
+         if !SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id ).nil?
+           siparis = SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id )
+           siparis.miktar = value
+           siparis.save
+         else
           siparis = SiparisFormu.new
           siparis.mekan_id = mekan.id
           siparis.menu_id = menu.id
           siparis.malzeme_id = key.split("_").last
           siparis.miktar = value
           siparis.save!
+         end
+       end
+    end
+  end
+  
+   def onayla
+      menu = Menu.find_by_id(params[:siparis_formu][:menu_id])
+      mekan = Mekan.find_by_id(params[:siparis_formu][:mekan_id])
+    
+    params[:siparis_formu].each do |key, value| 
+       if (key.start_with?("malzeme"))
+         if !SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id ).nil?
+           siparis = SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id )
+           siparis.miktar = value
+           siparis.onay = true
+           siparis.save
+         else
+          siparis = SiparisFormu.new
+          siparis.mekan_id = mekan.id
+          siparis.menu_id = menu.id
+          siparis.malzeme_id = Malzeme.find_by_id(key.split("_").last).id
+          siparis.miktar = value
+          siparis.onay = true
+          siparis.save!
+         end
        end
     end
   end

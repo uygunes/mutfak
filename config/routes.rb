@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+  resources :yemek_uretims
   resources :user_roles
+  resources :siparis_formus do
+    member do
+      get 'menu'
+      get 'menu_mekan'
+    end
+  end
   resources :mekan_stoks
   resources :stoks
   resources :mekans do
     member do
       get 'stok'
+      patch 'stok_giris'
     end
   end
   resources :mekan_kategoris
@@ -22,6 +30,10 @@ Rails.application.routes.draw do
     member do
       get 'kopyala'
       get 'aktif'
+      get 'uretim'
+      get 'artan'
+      post 'uretim_kayit'
+      post 'artan_kayit'
     end
   end
   resources :menuyemeks
@@ -43,6 +55,8 @@ Rails.application.routes.draw do
   get 'user_management/:id/edit', to: 'user_managements#edit', as: 'edit_user_management'
   get 'siparis_formu/form', to: 'siparis_formus#form', as: 'form_siparis_formu'
   post 'siparis_formu/kaydet', to: 'siparis_formus#kaydet', as: 'kaydet_siparis_formu'
+  post 'siparis_formus/:id/onayla', to: 'siparis_formus#onayla', as: 'onayla_siparis_formu'
+  post 'yemek_uretim/uretim', to: 'yemek_uretims#uretim', as: 'uretim_yemek_uretim'
   
   patch 'user_management/:id/update', to: 'user_managements#update', as: 'update_user_management'
 

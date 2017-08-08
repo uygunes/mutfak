@@ -1,9 +1,9 @@
 <h1>Stok Girisi</h1>
 
-<%= semantic_form_for @mekan, :url => stok_mekan_path(@article) do |f| %>
+<%= semantic_form_for @mekan, :url => stok_giris_mekan_path(@mekan) do |f| %>
   <%= f.inputs do %>
     <%= f.collection_select :id, Mekan.all, :id, :isim, {:prompt => "Mekan Sec"} %>
-    <h3>Ogunler</h3>
+    <h3>Malzemeler</h3>
     <div id='tasks'>
       <%= f.semantic_fields_for :mekan_stoks do |task| %>
         <%= render 'mekan_stok_fields', :f => task %>

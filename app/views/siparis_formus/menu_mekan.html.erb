@@ -1,0 +1,10 @@
+<%= form_for :siparis_formu, url: "onayla", :authenticity_token => true  do |f| %>
+<%= token_tag %>
+<%=f.hidden_field :menu_id, :value => @menu.id%>
+<%=f.hidden_field :mekan_id, :value => @mekan.id%>
+    <%@malzemeler.each do |malzeme| %>
+    <%= f.label malzeme.malzeme.name_with_city%>  <%= f.text_field :"malzeme_#{malzeme.malzeme_id}", value: "#{malzeme.miktar}"%>
+<%end%>
+<br /><br />
+ <%= f.submit 'Onayla'  %>
+<% end  %>

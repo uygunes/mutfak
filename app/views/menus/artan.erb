@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Artan Yemek Girisi</h1>
+
+<%= form_for :yemek_uretim, url: "artan_kayit",:authenticity_token => true  do |f| %>
+<%= token_tag %>
+<%=f.hidden_field :menu_id, :value => @menu.id%>
+ <% YemekUretim.where(:menu_id => @menu.id).each do |yu| %>
+       
+           <%=f.hidden_field :mekan_id, :value => yu.mekan_id%>
+           <%= f.label yu.yemek.isim%><%= f.text_field :"miktar_#{yu.yemek_id}", :value => YemekUretim.miktar_bul(yu.yemek.id,yu.yemek.mekan.id,@menu.id,"artan")%>
+           <%= f.label yu.birim.isim %>
+           <%=f.hidden_field :"birim_#{yu.yemek_id}", :value => yu.birim_id%>
+           <br /><br />
+   <%end%>
+  <%= f.submit  %>
+<% end  %>
+
+<br>

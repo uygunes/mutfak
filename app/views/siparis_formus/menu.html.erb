@@ -1,0 +1,9 @@
+<h1>Bu Menu icin Siparis Gecen Mutfaklar</h1>
+<table>
+    <% @mekanlar.each do |mekan| %>
+    <tr>
+        <td><%= link_to "#{Mekan.find_by_id(mekan).isim}", menu_mekan_siparis_formu_path(:menu_id => @menu.id, :mekan_id => mekan) %>  <%=SiparisFormu.onayli(mekan,@menu.id)%></td>
+    </tr>
+<%end%>
+</table>
+

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Yemek:</strong>
+  <%= @yemek_uretim.yemek_id %>
+</p>
+
+<p>
+  <strong>Mekan:</strong>
+  <%= @yemek_uretim.mekan_id %>
+</p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @yemek_uretim.menu_id %>
+</p>
+
+<p>
+  <strong>Miktar:</strong>
+  <%= @yemek_uretim.miktar %>
+</p>
+
+<p>
+  <strong>Birim:</strong>
+  <%= @yemek_uretim.birim_id %>
+</p>
+
+<%= link_to 'Edit', edit_yemek_uretim_path(@yemek_uretim) %> |
+<%= link_to 'Back', yemek_uretims_path %>

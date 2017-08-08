@@ -2,7 +2,8 @@ class Menu < ApplicationRecord
     default_scope { order(isim: :asc) }
     belongs_to :ogun
     belongs_to :mekan
-    has_many :siparis_formu
+    has_many :siparis_formus
+    has_many :yemek_ure
 	has_many :menu_yemeks, :dependent => :restrict_with_error
 	has_many :yemeks, :through => :menu_yemeks, :dependent => :restrict_with_error
 
@@ -14,7 +15,7 @@ class Menu < ApplicationRecord
         enable
     end
 
-     def maliyet
+    def maliyet
     	tutar = 0
     	carpan = 0
     	menu_yemek_kisi = 0
@@ -35,6 +36,10 @@ class Menu < ApplicationRecord
         yemekler = self.yemeks
         yemekler.group_by{|e| e.mekan}
     end
+    
+    def mekan_listesi_distinct(menu_id)
+        SiparisFormu.where(:menu_id =>menu_id).group(:id,:mekan_id).distinct.pluck(:mekan_id)
+    end
 
     def gerekli_malzemeler
         malzeme_listesi = Hash.new(0)
@@ -52,7 +57,7 @@ class Menu < ApplicationRecord
     end
     
     def mekana_gore_yemek(mekan_id)
-        self.yemeks.select{|yemek| yemek.mekan_id = mekan_id}
+        self.yemeks.where(:mekan_id => mekan_id)
     end
     
     def kisi_bul(yemek_id)
