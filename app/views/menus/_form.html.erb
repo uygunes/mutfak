@@ -1,29 +1,67 @@
-<%= semantic_form_for @menu do |f| %>
+<%= semantic_form_for @menu, :class => "form-horizontal" do |f| %>
+
   <% f.inputs do %>
-    <%= f.input :isim %>
-    <br />
-    <%= f.input :kisi , :label => "Menu Kac Kisilik?"%>
-    <br />
-    <%= f.label "Tarih" %>
-    <%= f.date_field :tarih%><br /><br />
-    <%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]],{:prompt => "Durum sec"} )%>
-    <br /><br />
-    <%= f.collection_select :mekan_id, Mekan.bar_restoran, :id, :isim, {:prompt => "Restoran sec"}%>
-      <br /><br />
-    <%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"}%>
-   
-    <br /><br />
+   <div class="field form-group">
+      <%= f.label :isim, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :isim, class: 'form-control' %>
+      </div>
+    </div>
+    
+    <div class="field form-group">
+      <%= f.label :kisi, :label => "Menu Kac Kisilik?", class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.text_field :kisi, class: 'form-control' %>
+      </div>
+    </div>
+    
+     <div class="field form-group">
+      <%= f.label :tarih, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.date_field :tarih, class: 'form-control' %>
+      </div>
+    </div>
+    
+     <div class="field form-group">
+      <label class="col-sm-2 control-label">Durum</label>
+      <div class="col-sm-10">
+         <%= f.select(:is_active,[['Aktif', 1], ['Pasif', 2]],{:prompt => "Durum sec"},{:class => "form-control"} )%>
+      </div>
+    </div>
+    
+    <div class="field form-group">
+      <label class="col-sm-2 control-label">Mekan</label>
+      <div class="col-sm-10">
+         <%= f.collection_select :mekan_id, Mekan.bar_restoran, :id, :isim, {:prompt => "Restoran sec"},{:class => "form-control"}%>
+      </div>
+    </div>
+  
+  
+    <div class="field form-group">
+      <label class="col-sm-2 control-label">Ogun</label>
+      <div class="col-sm-10">
+         <%= f.collection_select :ogun_id, Ogun.all, :id, :isim, {:prompt => "Ogun sec"},{:class => "form-control"}%>
+      </div>
+    </div>
+  
+  <div class="row">
+    <div class="col-sm-5" id='tasks'>
     <h3>Yemekler</h3>
-    <div id='tasks'>
+    </div>
+    <div class="col-sm-10" id='tasks'>
       <%= f.semantic_fields_for :menu_yemeks do |task| %>
         <%= render 'menu_yemek_fields', :f => task %>
       <% end %>
       <div class='links'>
-        <%= link_to_add_association 'Yemek Ekle', f, :menu_yemeks %>
+        <%= link_to_add_association 'Yemek Ekle', f, :menu_yemeks,{:class => "btn btn-primary btn-xs"} %>
       </div>
     </div>
- <br /><br />
-      <%= f.submit 'Kaydet' %>
-    
+
+      <div class="actions form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit 'Menu Olustur' %>
+        </div>
+      </div>
+  </div> 
   <% end %>
 <% end %>

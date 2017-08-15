@@ -2,6 +2,9 @@ class SiparisFormu < ApplicationRecord
     belongs_to :malzeme
     belongs_to :menu
     belongs_to :mekan
+    has_many :stok_takips
+    has_many :users
+    has_many :malzemes
     
     def mekan_bazli_siparis(mekan_id)
         self.select{|mekan| mekan.mekan_id = mekan_id}

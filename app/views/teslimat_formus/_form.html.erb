@@ -1,0 +1,12 @@
+<%= semantic_form_for @teslimat_formu do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :siparis_formu_id %>
+    <%= f.input :mekan_id %>
+    <%= f.input :miktar %>
+    <%= f.input :user_id %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

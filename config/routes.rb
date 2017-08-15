@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stok_takips
+  resources :teslimat_formus
   resources :yemek_uretims
   resources :user_roles
   resources :siparis_formus do
@@ -30,6 +32,7 @@ Rails.application.routes.draw do
     member do
       get 'kopyala'
       get 'aktif'
+      get 'teslimat'
       get 'uretim'
       get 'artan'
       post 'uretim_kayit'
@@ -57,7 +60,8 @@ Rails.application.routes.draw do
   post 'siparis_formu/kaydet', to: 'siparis_formus#kaydet', as: 'kaydet_siparis_formu'
   post 'siparis_formus/:id/onayla', to: 'siparis_formus#onayla', as: 'onayla_siparis_formu'
   post 'yemek_uretim/uretim', to: 'yemek_uretims#uretim', as: 'uretim_yemek_uretim'
-  
+  get 'teslimat_formu/form', to: 'teslimat_formus#form', as: 'form_teslimat_formu'
+  post 'teslimat_formu/kaydet', to: 'teslimat_formus#kaydet', as: 'kaydet_teslimat_formu'
   patch 'user_management/:id/update', to: 'user_managements#update', as: 'update_user_management'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

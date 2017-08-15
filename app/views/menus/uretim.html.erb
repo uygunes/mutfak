@@ -10,7 +10,7 @@
        <%yemek.each do |yemek| %>
        
            <%=f.hidden_field :mekan_id, :value => yemek.mekan.id%>
-
+           <%=f.hidden_field :"yemek_#{yemek.id}", :value => yemek.id%>
            <%= f.label yemek.isim%><%= f.text_field :"miktar_#{yemek.id}", :value => YemekUretim.miktar_bul(yemek.id,yemek.mekan.id,@menu.id,"uretim")%>
            <%= f.collection_select(:"birim_#{yemek.id}", Birim.all, :id, :isim, :selected => YemekUretim.bul(yemek.id,yemek.mekan.id,@menu.id,"uretim").nil? ? 1 : YemekUretim.bul(yemek.id,yemek.mekan.id,@menu.id,"uretim").birim_id) %>
            <br /><br />

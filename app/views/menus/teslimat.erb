@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mutfak Malzeme Teslimat</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <tr><td colspan="2">Mutfak Listesi</td></tr>
+    <% @menu.mekan_bazli_yemek.each_pair do |mekan,yemek| %>
+      <tr>
+        <td></td><td><%= link_to "#{mekan.isim} Teslimat Formu Olustur", form_teslimat_formu_path(:menu_id => @menu.id, :mekan_id => mekan.id) %></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<br>

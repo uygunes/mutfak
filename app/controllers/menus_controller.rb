@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   require 'amoeba'
-  before_action :set_menu, only: [:show, :edit, :update, :destroy, :aktif, :uretim,:artan]
+  before_action :set_menu, only: [:show, :edit, :update, :destroy, :aktif, :uretim,:artan, :teslimat]
 
   # GET /menus
   # GET /menus.json
@@ -41,7 +41,7 @@ class MenusController < ApplicationController
         menu = Menu.find_by_id(params[:yemek_uretim][:menu_id])
      
     params[:yemek_uretim].each do |key, value| 
-        
+        puts "buraya giriyor mu?"
        if (key.start_with?("yemek"))
          yemek = Yemek.find_by(id: key.split("_").last)
         
@@ -60,7 +60,9 @@ class MenusController < ApplicationController
           yemek_uretim.miktar = params[:yemek_uretim]["miktar_#{yemek.id}"]
           yemek_uretim.tip = "uretim"
          end
-          yemek_uretim.save!
+          yemek_uretim.save
+          puts "buraya girmiyor?"
+          StokTakip.malzeme_stok_azalt(yemek.mekan.id,menu.id,current_user.id)
        end
     end
     redirect_to menus_path, notice: 'Yemek uretimi girildi.'

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Teslimat Formus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Siparis formu</th>
+      <th>Mekan</th>
+      <th>Miktar</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teslimat_formus.each do |teslimat_formu| %>
+      <tr>
+        <td><%= teslimat_formu.siparis_formu_id %></td>
+        <td><%= teslimat_formu.mekan_id %></td>
+        <td><%= teslimat_formu.miktar %></td>
+        <td><%= teslimat_formu.user_id %></td>
+        <td><%= link_to 'Show', teslimat_formu %></td>
+        <td><%= link_to 'Edit', edit_teslimat_formu_path(teslimat_formu) %></td>
+        <td><%= link_to 'Destroy', teslimat_formu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teslimat Formu', new_teslimat_formu_path %>

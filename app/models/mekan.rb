@@ -1,5 +1,6 @@
 class Mekan < ApplicationRecord
 	belongs_to :mekan_kategori
+	has_many :stok_takips
 	has_many :siparis_formu
 	default_scope { order(isim: :asc) }
 	has_many :users, :dependent => :restrict_with_error
@@ -11,6 +12,7 @@ class Mekan < ApplicationRecord
 	has_many :mekan_stoks, :dependent => :restrict_with_error
 	has_many :stoks, :through => :mekan_stoks, :dependent => :restrict_with_error
 	has_many :yemek_uretims, :dependent => :restrict_with_error
+	
 
 	accepts_nested_attributes_for :mekan_oguns
     accepts_nested_attributes_for :oguns

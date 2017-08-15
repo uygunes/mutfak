@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808164127) do
+ActiveRecord::Schema.define(version: 20170809194345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,20 @@ ActiveRecord::Schema.define(version: 20170808164127) do
     t.datetime "updated_at", null: false
     t.integer "mekan_id"
     t.boolean "onay", default: false
+    t.integer "user_id"
+  end
+
+  create_table "stok_takips", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "mekan_id"
+    t.integer "siparis_formu_id"
+    t.integer "teslimat_formu_id"
+    t.integer "malzeme_id"
+    t.integer "user_id"
+    t.float "miktar"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "tip"
   end
 
   create_table "stoks", force: :cascade do |t|
@@ -158,6 +172,17 @@ ActiveRecord::Schema.define(version: 20170808164127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "miktar"
+  end
+
+  create_table "teslimat_formus", force: :cascade do |t|
+    t.integer "siparis_formu_id"
+    t.integer "mekan_id"
+    t.float "miktar"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "menu_id"
+    t.integer "malzeme_id"
   end
 
   create_table "user_roles", force: :cascade do |t|

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @stok_takip.menu_id %>
+</p>
+
+<p>
+  <strong>Mekan:</strong>
+  <%= @stok_takip.mekan_id %>
+</p>
+
+<p>
+  <strong>Siparis formu:</strong>
+  <%= @stok_takip.siparis_formu_id %>
+</p>
+
+<p>
+  <strong>Teslimat formu:</strong>
+  <%= @stok_takip.teslimat_formu_id %>
+</p>
+
+<p>
+  <strong>Malzeme:</strong>
+  <%= @stok_takip.malzeme_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @stok_takip.user_id %>
+</p>
+
+<p>
+  <strong>Miktar:</strong>
+  <%= @stok_takip.miktar %>
+</p>
+
+<%= link_to 'Edit', edit_stok_takip_path(@stok_takip) %> |
+<%= link_to 'Back', stok_takips_path %>

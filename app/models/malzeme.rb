@@ -4,7 +4,8 @@ class Malzeme < ApplicationRecord
 
 belongs_to :birim
 belongs_to :malzeme_kategori
-has_many :siparis_formus
+belongs_to :siparis_formu
+has_many :stok_takips
 has_one :stok, dependent: :destroy
 has_many :yemek_malzemes, :dependent => :restrict_with_error
 has_many :yemeks, :through => :yemek_malzemes, :dependent => :restrict_with_error

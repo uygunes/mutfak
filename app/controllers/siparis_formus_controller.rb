@@ -38,17 +38,20 @@ class SiparisFormusController < ApplicationController
          if !SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id ).nil?
            siparis = SiparisFormu.find_by(malzeme_id: key.split("_").last, menu_id: menu.id, mekan_id: mekan.id )
            siparis.miktar = value
-           siparis.save
+          
          else
           siparis = SiparisFormu.new
           siparis.mekan_id = mekan.id
           siparis.menu_id = menu.id
           siparis.malzeme_id = key.split("_").last
           siparis.miktar = value
-          siparis.save!
+          
          end
+         siparis.user_id = current_user.id
+         siparis.save!
        end
     end
+    redirect_to menus_url, notice: 'Siparis formu olusturuldu.'
   end
   
    def onayla
@@ -73,6 +76,7 @@ class SiparisFormusController < ApplicationController
          end
        end
     end
+    redirect_to menus_url, notice: 'Siparis formu onaylandi.'
   end
 
   # GET /siparis_formus/new

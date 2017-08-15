@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Stok Takips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Menu</th>
+      <th>Mekan</th>
+      <th>Siparis formu</th>
+      <th>Teslimat formu</th>
+      <th>Malzeme</th>
+      <th>User</th>
+      <th>Miktar</th>
+      <th>Hareket Tipi</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stok_takips.each do |stok_takip| %>
+      <tr>
+        <td><%= stok_takip.menu.isim %></td>
+        <td><%= stok_takip.mekan.isim %></td>
+        <td><%= stok_takip.siparis_formu_id %></td>
+        <td><%= stok_takip.teslimat_formu_id %></td>
+        <td><%= stok_takip.malzeme.isim %></td>
+        <td><%= stok_takip.user.isim %></td>
+        <td><%= stok_takip.miktar %></td>
+        <td><%= stok_takip.tip %></td>
+        <td><%= link_to 'Show', stok_takip %></td>
+        <td><%= link_to 'Edit', edit_stok_takip_path(stok_takip) %></td>
+        <td><%= link_to 'Destroy', stok_takip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

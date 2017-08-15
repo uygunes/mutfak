@@ -1,0 +1,9 @@
+<%= form_for :teslimat_formu, url: "kaydet", :authenticity_token => true  do |f| %>
+<%= token_tag %>
+<%=f.hidden_field :menu_id, :value => @menu.id%>
+<%=f.hidden_field :mekan_id, :value => @mekan.id%>
+ <%@malzemes.each do |siparis|%>
+   <%= f.label siparis.malzeme.isim%>  <%= f.text_field :"malzeme_#{siparis.malzeme.id}", value: "#{siparis.miktar}"%><br /><br />
+   <%end%>
+  <%= f.submit 'Teslimati Onayla' %>
+<% end  %>

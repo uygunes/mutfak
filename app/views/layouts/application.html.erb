@@ -12,35 +12,61 @@
   <body>
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-       <div style="">
-        <div style="float:left">
-          <div><%= link_to "Birimler", birims_path%></div>
-          <div><%= link_to "Mekanlar", mekans_path%></div>
-          <div><%= link_to "Malzemeler", malzemes_path%></div>
-          <div><%= link_to "Malzeme Kategorileri", malzeme_kategoris_path%></div>
-         
-          <div><%= link_to "Yemek Kategorileri", yemek_kategoris_path%></div>
-
-          <div><%= link_to "Ogunler", malzemes_path%></div>
-           <div><%= link_to "Kullanıcı rolleri", user_roles_path%></div>
-        </div>
-        <div style="float:left;margin-left:50px">
-            <div><%= link_to "Menuler", menus_path%></div>
-            <div><%= link_to "Yemekler", yemeks_path%></div>
-            <div><%= link_to "Stok Yonetimi", stoks_path%></div>
-            <div><%= link_to "Siparis Formlari", siparis_formus_path%></div>
-            <div><%= link_to "Kullanicilar", user_management_path%></div>
-        </div>
-        <br /><br /><br /><br /><br /><br /><br />
+       <div class="container-fluid">
+         <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="/">Akilli Mutfak</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Menuler", menus_path%></li>
+        <li><%= link_to "Siparis Formlari", siparis_formus_path%></li>
+        <li><%= link_to "Kullanicilar", user_management_path%></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Tanimlar
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Birimler", birims_path%></li>
+            <li><%= link_to "Mekanlar", mekans_path%></li>
+            <li><%= link_to "Malzemeler", malzemes_path%></li> 
+            <li><%= link_to "Malzeme Kategorileri", malzeme_kategoris_path%></li>
+            <li><%= link_to "Yemekler", yemeks_path%></li>
+            <li><%= link_to "Yemek Kategorileri", yemek_kategoris_path%></li>
+            <li><%= link_to "Ogunler", malzemes_path%></li>
+            <li><%= link_to "Kullanıcı rolleri", user_roles_path%></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Raporlar
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+          
+            <li><%= link_to "Stok Hareketleri", stok_takips_path%></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      
         <div style="float: right">
         <% if current_user.is_a?(User) %>
-      <%= link_to "Cikis", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Kaydol", new_user_registration_path %>
-      <%= link_to "Giris Yap", new_user_session_path %>
-    <% end %>
+        <%= link_to "Cikis", destroy_user_session_path, method: :delete %>
+        <% else %>
+        <%= link_to "Kaydol", new_user_registration_path %>
+        <%= link_to "Giris Yap", new_user_session_path %>
+        <% end %>
+      </div>
+       <%= yield %>
     </div>
-    </div>
-    <%= yield %>
+   
   </body>
 </html>
